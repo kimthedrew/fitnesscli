@@ -28,10 +28,9 @@
 #     main()
 
 # cli.py
-import sys
-from helpers import (
+
+from lib.helpers import (
     display_welcome,
-    get_user_input,
     add_user, 
     add_workout_session, 
     view_workouts,
@@ -39,6 +38,10 @@ from helpers import (
 )
 
 import sys
+from lib.db.session import engine
+from lib.models.model_1 import Base
+
+Base.metadata.create_all(engine)
 
 def main_menu():
     display_welcome()
@@ -51,7 +54,7 @@ def main_menu():
         print("3. View Workouts")
         print("4. Delete Workout")
         print("5. Exit")
-        choice = get_user_input("Enter choice: ")
+        choice = input("Enter choice: ")
 
         if choice == '1':
             add_user()
