@@ -1,172 +1,97 @@
-# Phase 3 CLI+ORM Project Template
+Python CLI Application
 
-## Learning Goals
+Overview
 
-- Discuss the basic directory structure of a CLI.
-- Outline the first steps in building a CLI.
+This Python CLI application is designed to address a real-world problem by providing an intuitive, text-based interface for users. It leverages best practices in software development and a robust data management system with SQLAlchemy ORM. The application is packaged and structured for maintainability, ensuring clean, efficient, and reusable code.
 
----
+Features
 
-## Introduction
+Command-Line Interface (CLI): A user-friendly CLI for seamless interaction.
 
-You now have a basic idea of what constitutes a CLI. Fork and clone this lesson
-for a project template for your CLI.
+Data Management: Built with SQLAlchemy ORM to handle data across three or more related tables.
 
-Take a look at the directory structure:
+Virtual Environment: Uses Pipenv to manage dependencies, ensuring a clean and isolated environment.
 
-```console
-.
-├── Pipfile
-├── Pipfile.lock
-├── README.md
-└── lib
-    ├── models
-    │   ├── __init__.py
-    │   └── model_1.py
-    ├── cli.py
-    ├── debug.py
-    └── helpers.py
-```
+Modular Design: Follows Python's best practices with a proper package structure.
 
-Note: The directory also includes two files named `CONTRIBUTING.md` and
-`LICENSE.md` that are specific to Flatiron's curriculum. You can disregard or
-delete the files if you want.
+Efficient Data Structures: Incorporates lists, dictionaries, and tuples for optimal performance.
 
----
+Getting Started
 
-## Generating Your Environment
+Prerequisites
 
-You might have noticed in the file structure- there's already a Pipfile!
+Python 3.8 or higher
 
-Install any additional dependencies you know you'll need for your project by
-adding them to the `Pipfile`. Then run the commands:
+Pipenv (to manage the virtual environment and dependencies)
 
-```console
-pipenv install
-pipenv shell
-```
+Installation
 
----
+Clone the repository
 
-## Generating Your CLI
+Set up the virtual environment
 
-A CLI is, simply put, an interactive script and prompts the user and performs
-operations based on user input.
+Activate the virtual environment
 
-The project template has a sample CLI in `lib/cli.py` that looks like this:
+Run the application:
 
-```py
-# lib/cli.py
+python main.py
 
-from helpers import (
-    exit_program,
-    helper_1
-)
+Configuration
 
+Update the config.py file to set database configurations and other application-specific settings.
 
-def main():
-    while True:
-        menu()
-        choice = input("> ")
-        if choice == "0":
-            exit_program()
-        elif choice == "1":
-            helper_1()
-        else:
-            print("Invalid choice")
+Usage
 
+The CLI provides the following commands:
 
-def menu():
-    print("Please select an option:")
-    print("0. Exit the program")
-    print("1. Some useful function")
+add: Add new entries to the database.
 
+list: Display data from the database.
 
-if __name__ == "__main__":
-    main()
-```
+update: Modify existing data.
 
-The helper functions are located in `lib/helpers.py`:
+delete: Remove entries from the database.
 
-```py
-# lib/helpers.py
+help: Get a list of available commands.
 
-def helper_1():
-    print("Performing useful function#1.")
+Example:
 
+python main.py add --name "John Doe" --email "john.doe@example.com"
+python main.py list
 
-def exit_program():
-    print("Goodbye!")
-    exit()
-```
+Database Structure
 
-You can run the template CLI with `python lib/cli.py`, or include the shebang
-and make it executable with `chmod +x`. The template CLI will ask for input, do
-some work, and accomplish some sort of task.
+The application uses SQLAlchemy ORM to manage a relational database with the following tables:
 
-Past that, CLIs can be whatever you'd like, as long as you follow the project
-requirements.
+Users: Stores user information (e.g., name, email).
 
-Of course, you will update `lib/cli.py` with prompts that are appropriate for
-your application, and you will update `lib/helpers.py` to replace `helper_1()`
-with a useful function based on the specific problem domain you decide to
-implement, along with adding other helper functions to the module.
+Projects: Contains details about various projects.
 
-In the `lib/models` folder, you should rename `model_1.py` with the name of a
-data model class from your specific problem domain, and add other classes to the
-folder as needed. The file `lib/models/__init__.py` has been initialized to
-create the necessary database constants. You need to add import statements to
-the various data model classes in order to use the database constants.
+Tasks: Tracks tasks associated with projects and users.
 
-You are also welcome to implement a different module and directory structure.
-However, your project should be well organized, modular, and follow the design
-principal of separation of concerns, which means you should separate code
-related to:
+These tables are interconnected, ensuring seamless relationships and data integrity.
 
-- User interface
-- Data persistence
-- Problem domain rules and logic
+Development Guidelines
 
----
+Follow the PEP 8 coding standards.
 
-## Updating README.md
+Write modular and reusable code.
 
-`README.md` is a Markdown file that should describe your project. You will
-replace the contents of this `README.md` file with a description of **your**
-actual project.
+Ensure all dependencies are listed in the Pipfile.
 
-Markdown is not a language that we cover in Flatiron's Software Engineering
-curriculum, but it's not a particularly difficult language to learn (if you've
-ever left a comment on Reddit, you might already know the basics). Refer to the
-cheat sheet in this assignments's resources for a basic guide to Markdown.
+Test thoroughly before pushing changes.
 
-### What Goes into a README?
+Contributing
 
-This README serves as a template. Replace the contents of this file to describe
-the important files in your project and describe what they do. Each Python file
-that you edit should get at least a paragraph, and each function should be
-described with a sentence or two.
+We welcome contributions to improve this project. To contribute:
 
-Describe your actual CLI script first, and with a good level of detail. The rest
-should be ordered by importance to the user. (Probably functions next, then
-models.)
+Fork the repository.
 
-Screenshots and links to resources that you used throughout are also useful to
-users and collaborators, but a little more syntactically complicated. Only add
-these in if you're feeling comfortable with Markdown.
+Create a new branch for your feature or bugfix.
 
----
+Submit a pull request with a clear description of your changes.
 
-## Conclusion
+License
 
-A lot of work goes into a good CLI, but it all relies on concepts that you've
-practiced quite a bit by now. Hopefully this template and guide will get you off
-to a good start with your Phase 3 Project.
+This project is licensed under the MIT License.
 
-Happy coding!
-
----
-
-## Resources
-
-- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
