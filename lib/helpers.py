@@ -7,8 +7,12 @@
 # def exit_program():
 #     print("Goodbye!")
 #     exit()
+import sys
+import os
 
-from db import session
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from lib.db import session
 from lib.db.models import User
 
 def add_user():
