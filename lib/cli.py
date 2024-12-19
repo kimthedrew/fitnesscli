@@ -28,15 +28,22 @@
 #     main()
 
 # cli.py
+import sys
 from helpers import (
+    display_welcome,
+    get_user_input,
     add_user, 
     add_workout_session, 
     view_workouts,
     delete_workout
 )
+
 import sys
 
 def main_menu():
+    display_welcome()
+
+
     while True:
         print("\nFitness Tracker CLI")
         print("1. Add User")
@@ -44,7 +51,7 @@ def main_menu():
         print("3. View Workouts")
         print("4. Delete Workout")
         print("5. Exit")
-        choice = input("Enter choice: ")
+        choice = get_user_input("Enter choice: ")
 
         if choice == '1':
             add_user()
@@ -61,5 +68,9 @@ def main_menu():
             print("Invalid option. Please try again.")
         
 if __name__ == "__main__":
-    main_menu()
+    try:
+        main_menu()
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        sys.exit(1)
 
