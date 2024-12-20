@@ -1,97 +1,117 @@
-Python CLI Application
+# WorkoutPal
 
-Overview
+WorkoutPal is a command-line interface (CLI) application designed to help users manage their fitness journey. Users can register, log workout sessions, view their progress, and delete outdated sessions, all from the comfort of their terminal.
 
-This Python CLI application is designed to address a real-world problem by providing an intuitive, text-based interface for users. It leverages best practices in software development and a robust data management system with SQLAlchemy ORM. The application is packaged and structured for maintainability, ensuring clean, efficient, and reusable code.
+## Features
 
-Features
+- **Add Users:** Register new users by providing a name and email.
+- **Log Workouts:** Record workout sessions with details such as type, duration, and associated user.
+- **View Workouts:** List all recorded workout sessions.
+- **Delete Workouts:** Remove outdated or incorrect workout sessions.
 
-Command-Line Interface (CLI): A user-friendly CLI for seamless interaction.
+## Technologies Used
 
-Data Management: Built with SQLAlchemy ORM to handle data across three or more related tables.
+- **Python 3.8+**
+- **SQLAlchemy:** For ORM-based database interactions.
+- **SQLite:** Lightweight database for data storage.
 
-Virtual Environment: Uses Pipenv to manage dependencies, ensuring a clean and isolated environment.
+## Prerequisites
 
-Modular Design: Follows Python's best practices with a proper package structure.
+Ensure you have the following installed on your system:
 
-Efficient Data Structures: Incorporates lists, dictionaries, and tuples for optimal performance.
+- Python 3.8 or later
+- pip (Python package installer)
 
-Getting Started
+## Setup and Installation
 
-Prerequisites
+1. Clone the repository:
 
-Python 3.8 or higher
+   ```bash
+   git clone https://github.com/your-username/workoutpal.git
+   cd workoutpal
+   ```
 
-Pipenv (to manage the virtual environment and dependencies)
+2. Set up a virtual environment:
 
-Installation
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-Clone the repository
+3. Install dependencies:
 
-Set up the virtual environment
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Activate the virtual environment
+4. Initialize the database:
+
+   ```bash
+   python -m lib.db.init
+   ```
+
+## Usage
 
 Run the application:
 
-python main.py
+```bash
+python -m lib.cli
+```
 
-Configuration
+### Main Menu
 
-Update the config.py file to set database configurations and other application-specific settings.
+- **1. Add User:** Enter a user's name and email to register them.
+- **2. Add Workout Session:** Record a workout session for a specific user.
+- **3. View Workouts:** Display all recorded workout sessions.
+- **4. Delete Workout:** Remove a workout session by its ID.
+- **5. Exit:** Exit the application.
 
-Usage
+## Project Structure
 
-The CLI provides the following commands:
+```
+workoutpal/
+├── lib/
+│   ├── cli.py          # Main CLI application
+│   ├── helpers.py      # Helper functions for CLI operations
+│   ├── db/
+│   │   ├── session.py  # Database session and engine setup
+│   │   ├── init.py     # Database initialization script
+│   │   └── models.py   # SQLAlchemy models (User, WorkoutSession)
+│   └── __init__.py
+├── requirements.txt    # Python dependencies
+├── README.md           # Project documentation
+└── .gitignore          # Git ignored files
+```
 
-add: Add new entries to the database.
+## Example
 
-list: Display data from the database.
+1. **Add User:**
+   ```
+   Enter choice: 1
+   Enter name: John Doe
+   Enter email: john.doe@example.com
+   User added successfully!
+   ```
 
-update: Modify existing data.
+2. **Log Workout Session:**
+   ```
+   Enter choice: 2
+   Enter workout type: Running
+   Enter workout duration (in minutes): 30
+   Enter user ID: 1
+   Workout session added successfully!
+   ```
 
-delete: Remove entries from the database.
+3. **View Workouts:**
+   ```
+   Enter choice: 3
+   ID: 1, Type: Running, Duration: 30, User ID: 1
+   ```
 
-help: Get a list of available commands.
+## Contributing
 
-Example:
+Contributions are welcome! Feel free to open issues or submit pull requests with improvements.
 
-python main.py add --name "John Doe" --email "john.doe@example.com"
-python main.py list
-
-Database Structure
-
-The application uses SQLAlchemy ORM to manage a relational database with the following tables:
-
-Users: Stores user information (e.g., name, email).
-
-Projects: Contains details about various projects.
-
-Tasks: Tracks tasks associated with projects and users.
-
-These tables are interconnected, ensuring seamless relationships and data integrity.
-
-Development Guidelines
-
-Follow the PEP 8 coding standards.
-
-Write modular and reusable code.
-
-Ensure all dependencies are listed in the Pipfile.
-
-Test thoroughly before pushing changes.
-
-Contributing
-
-We welcome contributions to improve this project. To contribute:
-
-Fork the repository.
-
-Create a new branch for your feature or bugfix.
-
-Submit a pull request with a clear description of your changes.
-
-License
+## License
 
 This project is licensed under the MIT License.
-
